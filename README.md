@@ -27,6 +27,3 @@ A responsive, infinitely looping image slider built with semantic HTML, custom C
 - `index.html` — semantic page structure and sample slides.
 - `style.css` — responsive layout, visual styles, and transition states.
 - `slider.js` — slide indexing, dynamic dots, events, and infinite-loop behavior.
-
-## Notes
-The image sources are remote URLs, so the browser needs an internet connection to display them. Replace them with your own licensed image URLs or local assets if preferred.

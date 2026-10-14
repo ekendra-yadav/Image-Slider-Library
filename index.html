@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set the character encoding so text and symbols display correctly. -->
+  <meta charset="UTF-8">
+
+  <!-- Make the layout adjust to the width of mobile phones and other devices. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Briefly describe the purpose of this web page. -->
+  <meta name="description" content="A responsive image slider built with vanilla JavaScript.">
+
+  <!-- Set the title shown in the browser tab. -->
+  <title>Image Slider Library</title>
+
+  <!-- Connect the external CSS file that controls the page's appearance. -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Load the JavaScript file after the HTML has been parsed. -->
+  <script src="slider.js" defer></script>
+</head>
+<body>
+  <!-- Keep the main content of the page inside one container. -->
+  <main class="page-shell">
+
+    <!-- Introduce the image slider with a heading and a short description. -->
+    <header class="page-heading">
+      <p class="eyebrow">VANILLA JAVASCRIPT PROJECT</p>
+      <h1>Image Slider Library</h1>
+      <p class="subtitle">
+        A smooth, responsive way to explore a collection of places.
+      </p>
+    </header>
+
+    <!-- This section contains the image slider and its navigation controls. -->
+    <section class="slider-section" aria-label="Featured image gallery">
+
+      <!-- JavaScript uses this element to identify the slider component. -->
+      <div class="slider" data-slider>
+
+        <!-- Show only one slide at a time by hiding the overflowing content. -->
+        <div class="slider-viewport">
+
+          <!-- JavaScript moves this track horizontally to change images. -->
+          <div class="slider-track" data-track>
+
+            <!-- First slide: a mountain landscape with a descriptive caption. -->
+            <figure class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85"
+                alt="Snow-covered mountain peaks beneath a clear sky"
+              >
+              <figcaption class="slide-caption">
+                <span class="slide-kicker">01 / LANDSCAPE</span>
+                <span class="slide-title">Mountain Escape</span>
+              </figcaption>
+            </figure>
+
+            <!-- Second slide: an ocean scene with its own caption. -->
+            <figure class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=85"
+                alt="Ocean waves rolling toward a sandy beach"
+              >
+              <figcaption class="slide-caption">
+                <span class="slide-kicker">02 / COAST</span>
+                <span class="slide-title">Coastal Calm</span>
+              </figcaption>
+            </figure>
+
+            <!-- Third slide: a forest photograph. -->
+            <figure class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"
+                alt="Sunlight filtering through a green forest"
+              >
+              <figcaption class="slide-caption">
+                <span class="slide-kicker">03 / NATURE</span>
+                <span class="slide-title">Forest Light</span>
+              </figcaption>
+            </figure>
+
+            <!-- Fourth slide: an ocean photograph that completes the collection. -->
+            <figure class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1600&q=85"
+                alt="Blue sea and soft ocean waves"
+              >
+              <figcaption class="slide-caption">
+                <span class="slide-kicker">04 / OCEAN</span>
+                <span class="slide-title">Open Water</span>
+              </figcaption>
+            </figure>
+
+          </div>
+        </div>
+
+        <!-- Move to the previous image when this button is clicked. -->
+        <button
+          class="slider-arrow slider-arrow--previous"
+          type="button"
+          data-previous
+          aria-label="Previous image"
+        >
+          <span aria-hidden="true">&#8592;</span>
+        </button>
+
+        <!-- Move to the next image when this button is clicked. -->
+        <button
+          class="slider-arrow slider-arrow--next"
+          type="button"
+          data-next
+          aria-label="Next image"
+        >
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+
+      <!-- Display the navigation dots and the current image number. -->
+      <div class="slider-footer">
+
+        <!-- JavaScript creates one clickable dot for each original slide. -->
+        <div
+          class="slider-dots"
+          data-dots
+          aria-label="Choose an image"
+        ></div>
+
+        <!-- JavaScript updates this counter whenever the active image changes. -->
+        <p class="slide-counter" data-counter aria-live="polite">
+          Image 1 of 4
+        </p>
+      </div>
+
+      <!-- Let visitors know that keyboard navigation is also available. -->
+      <p class="keyboard-hint">
+        Use the arrow buttons or your keyboard's left and right keys.
+      </p>
+    </section>
+
+    <!-- Finish the page with a short description of the technologies used. -->
+    <footer class="page-footer">
+      <span>Built with HTML, CSS, and vanilla JavaScript</span>
+      <span>Responsive · Animated · Infinite loop</span>
+    </footer>
+
+  </main>
+</body>
+</html>

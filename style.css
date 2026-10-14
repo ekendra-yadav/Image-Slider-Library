@@ -1,0 +1,318 @@
+/* Set the main colors, spacing, and sizing values used throughout the page. */
+:root {
+  color-scheme: light;
+  --page-bg: #f2f5f8;
+  --surface: #ffffff;
+  --text: #1c2834;
+  --muted: #627181;
+  --accent: #1f5f8b;
+  --accent-dark: #174665;
+  --focus: #f0b429;
+  --radius: 22px;
+  --content-width: 1060px;
+}
+
+/* Include padding and borders in an element's total width and height. */
+* {
+  box-sizing: border-box;
+}
+
+/* Make movement between page sections smooth when scrolling. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #ffffff 0, var(--page-bg) 65%);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+/* Keep buttons consistent with the font used on the rest of the page. */
+button {
+  font: inherit;
+}
+
+/* Make keyboard focus easy to see when navigating with a keyboard. */
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Center the page content and leave space around it. */
+.page-shell {
+  width: min(100% - 36px, var(--content-width));
+  margin-inline: auto;
+  padding-block: clamp(36px, 7vw, 76px) 28px;
+}
+
+/* Keep the page title and introductory text centered above the slider. */
+.page-heading {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+/* Style the small label displayed above the main heading. */
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+/* Adjust the subtitle size and color to keep it readable on different screens. */
+.subtitle {
+  margin: 15px auto 0;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 2vw, 1.12rem);
+}
+
+/* Let the slider use the full width available inside its parent. */
+.slider-section {
+  width: 100%;
+  margin-inline: auto;
+}
+
+/* Create the main frame that holds the images and navigation buttons. */
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #dce5eb;
+  box-shadow: 0 22px 55px rgb(22 44 61 / 16%);
+}
+
+/* Hide the parts of the image track that fall outside the visible frame. */
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Place the slides in a row so JavaScript can move them horizontally. */
+.slider-track {
+  display: flex;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 560ms cubic-bezier(0.22, 0.75, 0.25, 1);
+  will-change: transform;
+}
+
+/* Give every slide the same width and maintain a wide image layout. */
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 0;
+  margin: 0;
+  aspect-ratio: 16 / 8.2;
+  overflow: hidden;
+  background: #c9d4dc;
+}
+
+/* Add a dark gradient at the bottom so the caption stands out against the image. */
+.slide::after {
+  position: absolute;
+  inset: 35% 0 0;
+  content: "";
+  background: linear-gradient(transparent, rgb(7 20 31 / 78%));
+  pointer-events: none;
+}
+
+/* Fill each slide with its image without stretching it out of proportion. */
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Position the caption over the lower part of the image. */
+.slide-caption {
+  position: absolute;
+  z-index: 1;
+  right: clamp(20px, 5vw, 52px);
+  bottom: clamp(22px, 5vw, 48px);
+  left: clamp(20px, 5vw, 52px);
+  display: grid;
+  gap: 5px;
+  color: #fff;
+}
+
+/* Style the small uppercase text above each image title. */
+.slide-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* Make the main image caption prominent while allowing it to resize with the screen. */
+.slide-title {
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+/* Place the previous and next buttons over the image. */
+.slider-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: grid;
+  width: clamp(42px, 5vw, 54px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+  background: rgb(15 34 49 / 68%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.55rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: background-color 180ms ease, scale 180ms ease;
+  backdrop-filter: blur(8px);
+}
+
+/* Give the navigation buttons a slightly stronger appearance on hover. */
+.slider-arrow:hover {
+  background: var(--accent-dark);
+  scale: 1.06;
+}
+
+/* Keep the previous button near the left edge of the slider. */
+.slider-arrow--previous {
+  left: clamp(12px, 2vw, 22px);
+}
+
+/* Keep the next button near the right edge of the slider. */
+.slider-arrow--next {
+  right: clamp(12px, 2vw, 22px);
+}
+
+/* Arrange the image dots and counter beneath the slider. */
+.slider-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 4px 0;
+}
+
+/* Display the navigation dots in a horizontal row. */
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Give each navigation dot a simple circular appearance. */
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #b8c4ce;
+  cursor: pointer;
+  transition: width 220ms ease, background-color 220ms ease;
+}
+
+/* Make the dot for the current image longer and change its color. */
+.slider-dot[aria-current="true"] {
+  width: 28px;
+  background: var(--accent);
+}
+
+/* Keep the image counter readable and on one line. */
+.slide-counter {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Add a short hint explaining the available keyboard controls. */
+.keyboard-hint {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* Separate the footer from the main content with a subtle border. */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 46px;
+  padding-top: 18px;
+  border-top: 1px solid #d6dfe6;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Adjust spacing and layout for smaller screens, including mobile phones. */
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 24px, var(--content-width));
+    padding-top: 38px;
+  }
+
+  .page-heading {
+    margin-bottom: 22px;
+  }
+
+  /* Use a taller image shape on narrow screens. */
+  .slide {
+    aspect-ratio: 4 / 3;
+  }
+
+  .slide-caption {
+    bottom: 24px;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    font-size: 1.25rem;
+  }
+
+  /* Stack the slider controls vertically when horizontal space is limited. */
+  .slider-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .page-footer {
+    flex-direction: column;
+    margin-top: 32px;
+  }
+}
+
+/* Reduce animations for visitors who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
